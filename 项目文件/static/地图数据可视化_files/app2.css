@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+/********** Global **********/
+/*
+ *常用背景色： #0b0f34 (6,64,102) (29,45,57) (7,33,58) (8,13,28) (15,43,36)
+ */
+html, body {
+	width:100%;
+	height:100%;
+	min-height:635px;
+	font-family:"microsoft yahei", arial, sans-serif;
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:100% 100%;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+body.bg01 {background-image:url("地图数据可视化_files/img/bg01.png");}
+body.bg02 {background-image:url("地图数据可视化_files/img/bg02.png");}
+body.bg03 {background-image:url("地图数据可视化_files/img/bg03.png");}
+body.bg04 {background-image:url("地图数据可视化_files/img/bg04.png");}
+.header {
+	margin:0 auto;
+	width:100%;
+	height:65px;
+	max-width:1920px;
+	background:url("img/header.png") center no-repeat;
+}
+.header h3 {
+	margin:0;
+	padding:0;
+	line-height:50px;
+	text-align:center;
+	font-size:24px;
+	color:#5dc2fe;
+}
+.wrapper {position:absolute;top:80px;bottom:0;left:0;right:0;min-height:555px;}
+.container-fluid {height:100%;min-height:100%;}
+.row {margin-left:-3px;margin-right:-4px;}
+.row>div {padding-left:3px;padding-right:4px;padding-top:4px;padding-bottom: 4px;}
+.xpanel-wrapper {padding-bottom:7px;box-sizing:border-box;}
+.xpanel-wrapper-1 {height:10%;}
+.xpanel-wrapper-2 {height:20%;}
+.xpanel-wrapper-3 {height:30%;}
+.xpanel-wrapper-4 {height:40%;}
+.xpanel-wrapper-5 {height:50%;}
+.xpanel-wrapper-6 {height:60%;}
+.xpanel-wrapper-7 {height:70%;}
+.xpanel-wrapper-8 {height:80%;}
+.xpanel-wrapper-9 {height:90%;}
+.xpanel-wrapper-13 {height:33.333333%;}
+.xpanel-wrapper-23 {height:66.666666%;}
+.xpanel {
+	padding:5px;
+	height:100%;
+	min-height:170px;
+    border-style:solid;
+    border-width:1px;
+	border-color:#000000;
+	box-sizing:border-box;
+}
+
+/* tool */
+.fill-h {height:100%;min-height:100%;}
+.fill {height:100%;min-height:100%;width:100%;min-width:100%;}
+.no-margin {margin:0 !important;}
+.no-padding {padding:0 !important;}
+ #maindiv{
+    	width:1000px ;
+    	height:800px;
+    }
+.roll{
+	overflow-y: scroll;
+	overflow-x: scroll;
+	}
+/* scrollbar */
+::-webkit-scrollbar {width:0;height:0;}
+::-webkit-scrollbar-track {background-color:transparent;}
+::-webkit-scrollbar-thumb {border-radius:5px;background-color:rgba(0, 0, 0, 0.3);}

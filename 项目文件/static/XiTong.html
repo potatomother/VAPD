@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://yyhsong.github.io/iDataV/case01/index.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>VAPD</title>
+		<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="地图数据可视化_files/app2.css">
+	</head>
+	<body >
+		<header class="header">
+			<h3>VAPD</h3>
+		</header>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row fill-h">
+					<!-- 左侧 -->
+					<div class="col-lg-3 fill-h" style="background-image:url(地图数据可视化_files/img/bg05.jpg);">
+							<!-- 左1 -->
+						<div class="xpanel-wrapper xpanel-wrapper-2">
+							<div class="xpanel">
+								<div class="fill-h"  _echarts_instance_="ec_1614315337231" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative; background: transparent;">
+								<div class="fill-h  roll"   >
+									<div  style="background-color:#A8A8A8; text-align:center"> <b>GPX4  protein</b></div>
+									</br>
+									PDB Entry:<input type="text" name="firstname" value="2obi"></br>
+									<div class="bg-info"> Summary for GPX4 Gene:</div>
+									GPX4 (Glutathione Peroxidase 4) is a Protein Coding gene. Diseases associated with GPX4 include Spondylometaphyseal Dysplasia, Sedaghatian Type and Male Infertility. Among its related pathways are Cytochrome P450 - arranged by substrate type and Arachidonic acid metabolism. Gene Ontology (GO) annotations related to this gene include glutathione peroxidase activity and glutathione binding. 
+								</div>
+								</div>
+							</div>
+						</div>
+							<!-- 左2 -->
+						<div class="xpanel-wrapper xpanel-wrapper-8">
+							<div class="xpanel">
+								<div class="fill-h"  _echarts_instance_="ec_1614315337233" style="overflow: scroll; -webkit-tap-highlight-color: transparent; user-select: none; background: transparent; height: 400px;"><div id="ZuoXiaPicture" class="roll" style="position: relative; width: 450px; height: 1400px; padding: 0px; margin: 0px; border-width: 0px; cursor: default; " ></div></div>
+							</div>
+						</div>
+					</div>
+					<!-- 中间 -->
+					<div class="col-lg-5 fill-h" >
+							<!-- 中1 -->
+						<div class="xpanel-wrapper xpanel-wrapper-7">
+							<div class="xpanel">
+							<div id ="autobutton" class="btn-group btn-group-sm">
+							    
+							</div>
+								<div style="height:90%;" id="scatterMap" _echarts_instance_="ec_1614315337232" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: '#ffffff';">
+									<div class="pull-left">
+									<svg id="svgCircleTutorial" height="15" width="600" xmlns="http://www.w3.org/2000/svg" transform="translate(10,10)">
+ 											<circle id="myCircle" cx="35" cy="5" r="5" fill="#873A71"  />
+ 											<text x="42" y="11" fill="#939393">pocket1</text>
+ 											<circle id="myCircle" cx="135" cy="5" r="5" fill=" #EA9C63"  />
+ 											<text x="142" y="11" fill="#939393">pocket2</text>
+ 											<circle id="myCircle" cx="235" cy="5" r="5" fill="#FBB300"  />
+ 											<text x="242" y="11" fill="#939393">pocket4</text>
+ 											<circle id="myCircle" cx="335" cy="5" r="5" fill="#796C64 "  />
+ 											<text x="342" y="11" fill="#939393">pocket6</text>
+ 											<circle id="myCircle" cx="435" cy="5" r="5" fill="#EE6F8B" />
+											<text x="442" y="11" fill="#939393">pocket8</text>
+										</svg>
+									</div>
+									<div  class="pull-right">
+										<img onclick="hb(this)" src="地图数据可视化_files/img/合并.svg" width="30" height="30"/>
+										<img  onclick="hf(this)" src="地图数据可视化_files/img/恢复.svg" width="30" height="30"/>
+										<img  onclick="fdj(this)" src="地图数据可视化_files/img/放大镜.svg" width="30" height="30"/>
+										<img  onclick="fdj(this)" src="地图数据可视化_files/img/设计_画图.svg" width="30" height="30"/>
+
+									</div>
+									<div class="chart" id='maindiv' style=" height:95%;width: 100%"></div>
+								</div>
+							</div>
+						</div>
+						<!-- 中2 -->
+						<div class="xpanel-wrapper xpanel-wrapper-3">
+							<div class="xpanel">
+								<div class="fill-h"  _echarts_instance_="ec_1614315337232" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: '#ffffff';">
+									<div style="height:  30px ;width: 60px">
+										<button type="button" id="FangDaJing" class="btn btn-default">magnifying glass</button>
+									</div>
+									<div id ="FangDaLine" style="height:90%">
+								</div>
+									
+								</div>
+							</div>
+						</div>
+						</div>
+					<!-- 右侧 -->
+					<div class="col-lg-4 fill-h">
+					<!-- 右1 -->
+						<div class="xpanel-wrapper xpanel-wrapper-5">
+							<div class="xpanel">
+								<div class="fill-h" id="provinceMap" _echarts_instance_="ec_1614315337234" style="-webkit-tap-highlight-color: transparent; user-select: none; background: transparent;">
+								
+										
+										<img   class="pull-right" onclick="changeYoushang1(this)" src="地图数据可视化_files/img/箭头.svg" width="30" height="30"/>
+									
+								<div  id="scatter" class="col-lg-6" style="position: relative; overflow: hidden; width:100%; height:100%; padding: 0px; margin: 0px; border-width: 0px;"></div>
+								</div>
+							</div>
+						</div>
+						<!-- 右2 -->
+						<div class="xpanel-wrapper xpanel-wrapper-5">
+							<div class="xpanel">
+								<div class="fill-h" id="countyMap" _echarts_instance_="ec_1614315337236" style="-webkit-tap-highlight-color: transparent; user-select: none; background: transparent;">
+									<iframe class="fill" src="..\..\..\ngl-master\examples\webapp.html"></iframe>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="color="> </div>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="http://d3js.org/d3.v4.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script type="text/javascript" src="地图数据可视化_files/mianLeft.js"></script>
+</body></html>

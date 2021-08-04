@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://yyhsong.github.io/iDataV/case01/index.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>空腔数据可视化</title>
+		<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="地图数据可视化_files/app2.css">
+	</head>
+	<body >
+		<header class="header">
+			<h3>空腔数据可视化</h3>
+		</header>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row fill-h">
+					<!-- 左侧 -->
+
+					<!-- 中间 -->
+					<div class="col-lg-12 fill-h">
+							<!-- 中1 -->
+						<div class="xpanel-wrapper xpanel-wrapper-7">
+							<div class="xpanel">
+
+								<div style="height:90%;" id="scatterMap" _echarts_instance_="ec_1614315337232" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: '#ffffff';">
+									<div class="chart" id='maindiv' style=" height:95%;width: 100%"></div>
+								</div>
+							</div>
+						</div>
+						<!-- 中2 -->
+
+						</div>
+
+
+				</div>
+			</div>
+		</div>
+		<div style="color="> </div>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="http://d3js.org/d3.v4.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script >
+
+
+		 chart("地图数据可视化_files//pockettest3.csv", "blue");
+        var datearray = [];
+        var colorrange = [];
+        function chart(csvpath, color) {
+            if (color == "blue") {
+                colorrange = ["#873A71"," #EA9C63","#796C64 "," #FBB300","#EE6F8B", "#057748", "#f20c00", "#000000", "#9d2933", "#896c39", "#F1EEF6","#980043", "#DD1C77", "#DF65B0", "#C994C7", "#D4B9DA", "#F1EEF6","#B30000", "#E34A33", "#FC8D59", "#FDBB84", "#FDD49E", "#FEF0D9","69491A","#072A24"];
+            } else if (color == "pink") {
+                colorrange = ["#980043", "#DD1C77", "#DF65B0", "#C994C7", "#D4B9DA", "#F1EEF6"];
+            } else if (color == "orange") {
+                colorrange = ["#B30000", "#E34A33", "#FC8D59", "#FDBB84", "#FDD49E", "#FEF0D9"];
+            }
+            strokecolor = colorrange[0];
+            var margin = {
+                top: 10,
+                right: 20,
+                bottom: 10,
+                left: 20
+            };
+ var div1 = document.getElementById("maindiv");
+            width = div1.clientWidth - margin.left - margin.right;
+            var height = div1.clientHeight ;
+            var tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "remove")
+                .style("position", "absolute")
+                .style("z-index", "20")
+                .style("visibility", "hidden")
+                .style("top", "30px")
+                .style("left", "55px");
+//坐标轴
+            var x = d3.scaleLinear()
+            .domain([0,100])
+                .range([0, width]);
+            var y = d3.scaleLinear()
+					.domain([0,2400])
+                    .range([height, 220]);
+            var z = d3.scaleOrdinal()
+                .range(colorrange);
+            var nest = d3.nest()
+                .key(function(d) {
+
+                    return d.t;
+                })
+               ;
+
+            var nestkey = d3.nest()
+                .key(function(d) {
+
+                    return d.t;
+                })
+                .key(function(d) {
+
+                    return d.t;
+                })
+                ;
+
+            var area = d3.area()
+                .x(function(d) {
+                    return x(d.data.key);
+                })
+                .y0(function(d) {
+                    return y(d[0]);
+                })
+                .y1(function(d) {
+                    return y(d[1]);
+                });
+            var svg = d3.select("#maindiv").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", "translate("+margin.left+",-18)");
+            var graph = d3.csv(csvpath, function(data) {
+                data.forEach(function(d) {
+                    d.t = d.t;
+                    d.value = +d.value;
+                });
+                 nestresult = nest.entries(data);
+
+                for (var i = 0; i < nestresult.length; i++) {
+                    obj = nestresult[i].values;
+                    delete nestresult[i].values;
+                    delete nestresult[i].value;
+                    changeobj = []
+                    for (var j = 0; j < obj.length; j++) {
+                        nestresult[i][obj[j].key] = obj[j].value;
+                    }
+                };
+
+
+
+
+
+//透明度
+var defs = svg.append("defs");
+var linearGradient
+ var dia=[]
+            $.ajax({
+				url: "地图数据可视化_files/TouMingDu1.json",//json文件位置，文件名
+				type: "GET",//请求方式为getD
+				dataType: "json", //返回数据格式为json
+				success: function(data) {//请求成功完成后要执行的方法
+				   //给info赋值给定义好的变量
+				   dia=data.data;
+
+				  for (var i=0;i<dia.length;i++){
+                       linearGradient = defs.append("linearGradient")
+                        .attr("id","linearColor"+i)
+                        .attr("x1","0%")
+                        .attr("y1","0%")
+                        .attr("x2","100%")
+                        .attr("y2","0%");
+                    for(var j=0;j<100;j++){
+                       linearGradient.append("stop")
+                        .attr("offset",0.5*j+"%")
+                        .style("stop-color",z(i))
+                        .style("stop-opacity",dia[i][j]);
+                    }
+				  }
+				}
+			})
+//½áÊø¶¨Òå
+    findkey = nest.entries(data);
+
+        for (var g = 0; g < findkey[0].values.length; g++) {
+            key[g] = findkey[0].values[g].key;
+        }
+//¶¨Òåstack
+	for(var i = 0; i <= key.length; i++) {
+		window["stack" + i] =i;
+	}
+	for (var i=0;i<key.length;i++){
+		window["stack" + i]= d3.stack()
+	                    .keys(function() {
+	                       var k=[];
+							k.push(key[i]);
+	                        return k;
+	                    })
+	                    .order(d3.stackOrderNone)
+	                    .offset(d3.stackOffsetWiggle);
+	 layers.push(window["stack" + i](nestresult)[0]);
+	}
+                svg.selectAll(".layer").
+                data(layers)
+                    .enter().append("path")
+                    .attr("class", "layer")
+                    .attr("d", function(d) {
+                        return area(d);
+                    })
+                    .attr("fill", function(d, i) {
+                    var u="url(#linearColor"+i+")";
+                        return u;
+                    })
+                    .attr("transform", function(d, i) {
+                        return "translate(10," + (-5+i*-90) + ")";
+                    })
+                    .attr("draggable","true")
+                    .attr("ondragstart","drag(event)")
+                    ;
+                svg.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + (height) + ")")
+                    //.attr("stroke","white")
+                    .call(d3.axisBottom(x))
+                    .select("path");
+                svg.selectAll(".layer")
+                    .attr("opacity", 1)
+                    .on("click", function(d,i){
+                      // 添加交互内容
+                            mousex = d3.mouse(this);
+                            mousex = mousex[0];
+	                        var str=this.attributes["fill"].value;
+						})
+                    .on("mouseover", function(d, i) {
+                        svg.selectAll(".layer").transition()
+                            .duration(250)
+                            .attr("opacity", function(d, j) {
+                                return j != i ? 0.5 : 1;
+                            })
+                    })
+                    .on("mousemove", function(d, i) {
+
+                        d3.select(this)
+                            .classed("hover", true)
+                            .attr("stroke", strokecolor)
+                            .attr("stroke-width", "0.5px");
+
+                    })
+                    .on("mouseout", function(d, i) {
+                        svg.selectAll(".layer")
+                            .transition()
+                            .duration(250)
+                            .attr("opacity", "1");
+                        d3.select(this)
+                            .classed("hover", false)
+                            //.attr("stroke-width", "0px"), tooltip.html("<p>" + d.key + "<br>" + pro + "</p>").style("visibility", "visible");
+                    })
+            });
+        }
+
+
+
+</script>
+</body></html>
